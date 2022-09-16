@@ -3,24 +3,24 @@
     
 //     int solve(int index, int start, int end, vector<int>& nums, vector<int>& mul, vector<vector<int>> &dp)
 //     {
-//         if(index==nums.size())
-//             return 0;
-//         if(dp[index][start]!=INT_MIN)
-//             return dp[index][start];
+//         if(index==mul.size())   return 0;
+//         if(dp[index][start]!=INT_MIN)    return dp[index][start];            
 //         int ans =max( mul[index]*nums[start]+solve(index+1,start+1,end,nums,mul,dp),
-//                                      mul[index]*nums[end]+solve(index+1,start,end-1,nums,mul,dp));
+//                       mul[index]*nums[end]+solve(index+1,start,end-1,nums,mul,dp));
 //         return dp[index][start]=ans;
         
 //     }
     
 //     int maximumScore(vector<int>& nums, vector<int>& mul)
 //     {
-//         int n= nums.size();
+//         int n= mul.size();
 //         vector<vector<int>> dp(n,vector<int>(n,INT_MIN));
 //         return solve(0,0,n-1,nums,mul,dp);
 //     }
 // };
 
+
+// right solution below
 
 class Solution {
 public:
