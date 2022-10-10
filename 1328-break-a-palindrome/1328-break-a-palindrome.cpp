@@ -34,12 +34,12 @@ public:
         //     return palindrome.substr(0,pos2)+'a'+palindrome.substr(pos2+1,palindrome.length()-pos2);
         int n=palindrome.length();
         if(n==1)return "";
-        int count =0,na;
+        int count =0;
         for(int i=0;i<n;i++)
         {
             if(palindrome[i]!='a')
             {  count++;
-             na=i;
+            
             }
         }
         if(count>1)
