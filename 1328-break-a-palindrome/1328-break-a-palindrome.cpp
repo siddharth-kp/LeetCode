@@ -45,8 +45,8 @@ public:
         if(count>1)
         {
             
-        int i=0;
-        for( i=0;i<n;i++)
+      
+        for(int i=0;i<n;i++)
         {
           if(palindrome[i]!='a')
           {
@@ -54,8 +54,7 @@ public:
           }
           
         }
-        if(i==n)
-            palindrome[1]='b';
+        
         }
        
         else
