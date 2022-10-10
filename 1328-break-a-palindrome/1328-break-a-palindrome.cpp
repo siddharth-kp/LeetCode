@@ -57,10 +57,7 @@ public:
         if(i==n)
             palindrome[1]='b';
         }
-        else if(count==0)
-        {
-            palindrome[n-1]='b';
-        }
+       
         else
         {
             palindrome[n-1]='b';
