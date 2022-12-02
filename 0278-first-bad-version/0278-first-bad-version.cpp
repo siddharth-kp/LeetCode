@@ -15,7 +15,7 @@ public:
             else
                 start=mid+1;
         }
-        cout<<mid<<endl;
+        //cout<<mid<<endl;
         if(isBadVersion(mid-1))
             return mid-1;
         else if(isBadVersion(mid))
