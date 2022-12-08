@@ -6,7 +6,6 @@ public:
         int left=0,right=0;
         unordered_set<char> s;
         int currlen=1,maxlen=1;
-        bool ok=true;
         while(right!=str.length())
         {
             if(left==right)
@@ -14,7 +13,6 @@ public:
                 s.clear();
                 s.insert(str[left]);
                 right++;
-                ok=true;
             }
             else if(s.count(str[right]))
             {
