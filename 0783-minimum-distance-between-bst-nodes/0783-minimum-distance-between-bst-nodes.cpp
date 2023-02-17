@@ -11,7 +11,7 @@
  */
 class Solution {
 public:
-    void fun(TreeNode* root, int& mini, int& prev)
+    void fun(TreeNode* root, int &mini, int &prev)
     {
         if(root==nullptr)
             return;
