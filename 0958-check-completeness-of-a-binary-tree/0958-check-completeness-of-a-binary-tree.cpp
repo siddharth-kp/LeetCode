@@ -25,10 +25,10 @@ public:
     {
         if(root==NULL)
             return true;
-        cout<<"root:"<<root->val<<"   "<<currlevel<<" "<<maxlevel<<"  "<<levelchange<<endl; 
+        // cout<<"root:"<<root->val<<"   "<<currlevel<<" "<<maxlevel<<"  "<<levelchange<<endl; 
         if(root->left==NULL && root->right==NULL)
         {
-            cout<<"leaf\n";
+            // cout<<"leaf\n";
             if(currlevel==maxlevel)
                 return true;
             else if(currlevel+1==maxlevel && !levelchange)
