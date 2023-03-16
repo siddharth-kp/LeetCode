@@ -24,11 +24,9 @@ public:
     bool checkbt(TreeNode* root, int currlevel, int &maxlevel)
     {
         if(root==NULL)
-            return true;
-        // cout<<"root:"<<root->val<<"   "<<currlevel<<" "<<maxlevel<<"  "<<levelchange<<endl; 
+            return true; 
         if(root->left==NULL && root->right==NULL)
         {
-            // cout<<"leaf\n";
             if(currlevel==maxlevel)
                 return true;
             else if(currlevel+1==maxlevel && !levelchange)
@@ -62,11 +60,3 @@ public:
         return checkbt(root,1,maxlevel);
     }
 };
-
-/*
-[1,2,3,4,5,6]
-[1,2,3,4,5,null,7]
-[1,2,3,5,null,7,8]
-[1,2,3,4,5,6,7,8,9,10,11,12,13,null,null,15]
-[1,2,3,5,6]
-*/
