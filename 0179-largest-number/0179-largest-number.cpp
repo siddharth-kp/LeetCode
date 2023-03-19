@@ -16,9 +16,6 @@ public:
         string ans="";
         for(auto i:v)
             ans+=i;
-        if(ans[0]=='0')
-        return "0";
-        else 
-            return ans;
+        return ans[0]=='0'?"0":ans;
     }
 };
