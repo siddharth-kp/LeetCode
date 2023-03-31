@@ -18,12 +18,6 @@ public:
         prefix[2000]=m[2000];
         for(int i=1999;i>=0;i--)
             prefix[i]=prefix[i+1]+m[i];
-        for(int i=0;i<10;i++)
-            cout<<m[i]<<" ";
-        cout<<endl;
-        for(int i=0;i<10;i++)
-            cout<<prefix[i]<<" ";
-        cout<<endl;
         vector<int> ans;
         for(string str:queries)
             ans.push_back(prefix[fun(str)+1]);
