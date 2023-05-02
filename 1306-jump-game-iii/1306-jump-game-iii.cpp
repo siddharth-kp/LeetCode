@@ -1,9 +1,10 @@
+// Memoization
+
 class Solution {
 public:
     
     bool recur(int idx, vector<int> &arr, vector<int> &dp, vector<bool> &visited)
     {
-        // cout<<idx<<endl;
         if(arr[idx]==0)
             return dp[idx]=1;
         if(visited[idx]==1)
@@ -31,3 +32,14 @@ public:
         return recur(start,arr,dp,visited);
     }
 };
+
+
+// Tabulation
+
+// class Solution {
+// public:
+//     bool canReach(vector<int>& arr, int start)
+//     {
+        
+//     }
+// };
