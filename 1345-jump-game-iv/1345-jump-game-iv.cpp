@@ -1,56 +1,91 @@
+// class Solution {
+// public:
+    
+//     vector<int> dp;
+//     unordered_map<int,vector<int>> mp;
+//     unordered_set<int> visited;
+    
+//     int recur(int idx, vector<int> &arr)
+//     {
+//         cout<<idx<<"   ";
+//         for(auto it:visited)
+//             cout<<it<<" ";
+//         cout<<endl;
+//         if(visited.count(idx))
+//             return INT_MAX-1;
+//         if(dp[idx]!=-1)
+//             return dp[idx];
+//         if(idx==arr.size()-1)
+//             return dp[idx]=0;
+//         visited.insert(idx);
+//         int fwd=(idx<arr.size()-1)?recur(idx+1,arr):INT_MAX-1;
+//         int bck=(idx>0)?recur(idx-1,arr):INT_MAX-1;
+//         int mini=INT_MAX-1;
+//         for(int i:mp[arr[idx]])
+//             mini=min(mini,recur(i,arr));
+//         visited.erase(idx);
+//         return dp[idx]=min(min(fwd,bck),mini)+1;
+//     }
+    
+//     int minJumps(vector<int>& arr)
+//     {
+//         dp.resize(arr.size(),-1);
+//         for(int i=0;i<arr.size();i++)
+//             mp[arr[i]].push_back(i);
+//         for(auto it:mp)
+//         {
+//             cout<<it.first<<"    ";
+//             for(int i:it.second)
+//                 cout<<i<<" ";
+//             cout<<endl;
+//         }        
+//         return recur(0,arr);
+//     }
+// };
 
 
 
 class Solution {
 public:
-    int minJumps(vector<int>& arr) {
-        int n = arr.size();
-        if(n == 1) return 0;
-        
-        unordered_map<int, vector<int>> mp;
-        
-        int step = 0;
-        
-        //fill map
-        for(int i = 0; i<n; i++){
-            mp[arr[i]].push_back(i);
-        }
-        
-        //queue
+    
+    int minJumps(vector<int>& arr)
+    {
+        vector<bool> visited(arr.size(),0);
         queue<int> q;
+        unordered_map<int,vector<int>> mp;
+        for(int i=0;i<arr.size();i++)
+            mp[arr[i]].push_back(i);
         q.push(0);
-        
-        while(!q.empty()){
-            step++;
-            int size = q.size();
-            
-            for(int i = 0; i<size; i++){
-                int j = q.front();
+        int steps=0;
+        while(!q.empty())
+        {
+            int n=q.size();
+            while(n--)
+            {
+                int u=q.front();
                 q.pop();
-                
-                //jump to j-1
-                if(j-1 >= 0 && mp.find(arr[j-1]) != mp.end()){
-                    q.push(j-1);
+                if(u==arr.size()-1)
+                    return steps;
+                if(u>0 && !visited[u-1])
+                {
+                    q.push(u-1);
+                    visited[u-1]=1;
                 }
-                
-                //jump to j+1
-                if(j+1 < n && mp.find(arr[j+1]) != mp.end()){
-                    if(j+1 == n-1) return step;
-                    q.push(j+1);
+                if(u<arr.size()-1 && !visited[u+1])
+                {
+                    visited[u+1]=1;
+                    q.push(u+1);
                 }
-                
-                // jump to equal
-                if(mp.find(arr[j]) != mp.end()){
-                    for(auto k: mp[arr[j]]){
-                        if(k != j){
-                            if(k == n-1) return step;
-                            q.push(k);
-                        }
+                for(int i:mp[arr[u]])
+                    if(!visited[i])
+                    {
+                        q.push(i);
+                        visited[i]=1;
                     }
-                }
-                mp.erase(arr[j]);
+                mp[arr[u]].clear();
             }
+            steps++;
         }
-        return step;
+        return -1;
     }
 };
