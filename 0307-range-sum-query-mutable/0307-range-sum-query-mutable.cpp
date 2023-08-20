@@ -1,11 +1,10 @@
-class NumArray {
+class sgt {
 private:
 	vector<int> sgt_arr;
 	vector<int> arr;
 	
 	void update(int idx, int chng, int st, int en, int sgt_arr_idx)
 	{
-		// cout<<"update: "<<idx<<" "<<chng<<" "<<st<<" "<<en<<" "<<sgt_arr_idx<<endl;
 		if(idx>=st && idx<=en)
 			sgt_arr[sgt_arr_idx]+=chng;
         else
@@ -20,7 +19,6 @@ private:
 	
 	int sum(int arr_left, int arr_right, int st, int en, int sgt_arr_idx)
 	{
-		// cout<<"sum: "<<arr_left<<" "<<arr_right<<" "<<st<<" "<<en<<" "<<sgt_arr_idx<<endl;
 		if(st>=arr_left && en<=arr_right)
 			return sgt_arr[sgt_arr_idx];
 		if(en<arr_left || st>arr_right)
@@ -47,14 +45,11 @@ private:
 	}
 
 public:
-    NumArray(vector<int>& nums)
+    sgt(vector<int>& nums)
     {
 		sgt_arr.resize(4*nums.size(),0);
 		arr=nums;
 		build(0,nums.size()-1,0);
-		// for(int i=0;i<5;i++)
-		// 	cout<<sgt_arr[i]<<" ";
-		// cout<<endl;
     }
 	
 	void update(int idx, int val)
@@ -62,16 +57,32 @@ public:
 		int change = val-arr[idx];
 		arr[idx]=val;
 		update(idx,change,0,arr.size()-1,0);
-		// cout<<"update: "<<idx<<" "<<val<<endl;
-		// for(int i=0;i<5;i++)
-		// 	cout<<sgt_arr[i]<<" ";
-		// cout<<endl;
 	}
+    
+    int sum(int left, int right)
+    {
+		return sum(left,right,0,arr.size()-1,0);
+    }
+};
+
+class NumArray {
+private:
+    sgt *sgt1;
+
+public:
+    NumArray(vector<int>& nums)
+    {
+        sgt1 = new sgt(nums);    
+    }
+    
+    void update(int index, int val)
+    {
+        sgt1->update(index,val);
+    }
     
     int sumRange(int left, int right)
     {
-		// cout<<"sum: "<<left<<" "<<right<<endl;
-		return sum(left,right,0,arr.size()-1,0);
+        return sgt1->sum(left,right);        
     }
 };
 
