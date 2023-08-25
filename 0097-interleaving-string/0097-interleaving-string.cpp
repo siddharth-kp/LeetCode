@@ -10,9 +10,11 @@ private:
         if(s1.size()==idx1 && s2.size()==idx2)
             return dp[idx1][idx2][idx3] = true;
         else if(s1.size()==idx1)
-            return dp[idx1][idx2][idx3] = s2[idx2]==s3[idx3] && recur(idx1,idx2+1,idx3+1);
+            if(s2[idx2] == s3[idx3])
+                return dp[idx1][idx2][idx3] = recur(idx1,idx2+1,idx3+1);
         else if(s2.size()==idx2)
-            return dp[idx1][idx2][idx3] = s1[idx1]==s3[idx3] && recur(idx1+1,idx2,idx3+1);
+            if(s1[idx1] == s3[idx3])
+                return dp[idx1][idx2][idx3] = recur(idx1+1,idx2,idx3+1);
         bool temp=0;
         if(s1[idx1]==s3[idx3])
             temp=temp|recur(idx1+1,idx2,idx3+1);
