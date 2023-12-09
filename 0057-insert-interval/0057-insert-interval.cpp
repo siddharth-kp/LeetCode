@@ -1,6 +1,6 @@
 class Solution {
 public:
-    vector<vector<int>> insert(vector<vector<int>> intervals, vector<int>& newInterval)
+    vector<vector<int>> insert(vector<vector<int>> &intervals, vector<int>& newInterval)
     {
         vector<vector<int>> ans;
         intervals.push_back(newInterval);
