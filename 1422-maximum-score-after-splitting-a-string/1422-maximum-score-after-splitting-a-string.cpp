@@ -10,9 +10,6 @@ public:
             else
                 v[i]=v[i-1]+(s[i]=='0');
         }
-        for(int i:v)
-            cout<<i<<" ";
-        cout<<endl;
         int maxi=0;
         auto max = [](int a, int b) -> int {
             if(a>b)
