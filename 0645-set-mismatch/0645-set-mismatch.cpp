@@ -2,23 +2,19 @@ class Solution {
 public:
     vector<int> findErrorNums(vector<int>& nums)
     {
-        unordered_set<int> s;
-        vector<int> v;
-        for(int i:nums)
+        int maxi = *max_element(nums.begin(),nums.end());
+        map<int,int> mp;
+        for(int i=1;i<=maxi;i++)    mp[i]*=1;
+        for(int i:nums) mp[i]++;
+        int f=-1, s=-1;
+        for(auto [i,j]:mp)
         {
-            //cout<<i<<" "<<s.count(i)<<endl;
-            if(s.count(i))
-            {
-                //cout<<i<<" ";
-                v.push_back(i);
-                break;
-            }
-            s.insert(i);
+            if(j==2)    f=i;
+            if(j==0)    s=i;
         }
-        for(int i=0;i<nums.size();i++)    s.insert(i+1);
-        for(int i:nums) s.erase(i);
-        //cout<<(*s.begin());
-        v.push_back(*s.begin());
-        return v;
+        if(s==-1)
+            return {f,maxi+1};
+        else
+            return {f,s};
     }
 };
