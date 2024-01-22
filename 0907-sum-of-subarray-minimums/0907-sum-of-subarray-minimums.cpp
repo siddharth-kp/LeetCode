@@ -47,13 +47,10 @@ public:
         vector<int> nse = nese(arr);
         vector<int> pse = pese(arr);
         long long int ans = 0;
-        // cout<<arr.size()<<endl;
-        // pnt(pse);pnt(nse);
         for(int i=0;i<arr.size();i++)
         {
             ans += ((long long)arr[i])*(i-pse[i])*(nse[i]-i);
             ans%=mod;
-            // cout<<arr[i]<<" "<<i-pse[i]<<" "<<nse[i]-i<<endl;
         }
         return ans;
     }
