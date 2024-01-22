@@ -3,7 +3,7 @@ public:
     vector<int> findErrorNums(vector<int>& nums)
     {
         int maxi = *max_element(nums.begin(),nums.end());
-        map<int,int> mp;
+        unordered_map<int,int> mp;
         for(int i=1;i<=maxi;i++)    mp[i]*=1;
         for(int i:nums) mp[i]++;
         int f=-1, s=-1;
