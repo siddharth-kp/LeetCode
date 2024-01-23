@@ -12,7 +12,6 @@ private:
                 solve(arr, i + 1, max_len, str + arr[i], char_count), --j;
             while (j >= 0)
                 --char_count[arr[i][j--] - 'a'];
-                
         }
     }
     
